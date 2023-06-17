@@ -9,7 +9,8 @@ from boto3.dynamodb.conditions import Attr, ConditionExpressionBuilder
 def merge_attr():
     """
     Attrを生成して結合する
-    rangeの引数を変えると、再帰の回数が変わる
+    rangeの引数を変えると、build_expressionでの再帰の回数が変わる
+    値が大きすぎると、RecursionErrorになる
     
     """
     attrs = [Attr('id').eq(i) for i in range(497)]
